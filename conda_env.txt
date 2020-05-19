@@ -1,0 +1,1 @@
+conda create -n KPIP python=3 gooey tabulate pandas mash kma -y
