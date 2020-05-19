@@ -17,7 +17,7 @@ def main():
     now = date.today()
     local_path = os.path.dirname(os.path.realpath(__file__))
     #print(local_path)
-    db_path = f"~/KPIP/db"
+    db_path = os.path.expanduser(f"~/KPIP/db")
     
     mash_parser = f"{local_path}/mash_screen_parser.py"
     kma_parser= f"{local_path}/kma_screen_parser.py"
