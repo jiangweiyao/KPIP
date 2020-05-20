@@ -1,14 +1,15 @@
 # Kmer Pathogen Identification Pipeline 
 
-This pipeline uses Mash Screen to identify which bacteria and viruses are contained in your NGS DNA sequences.
-It uses Mash Screen again to identify which plasmids are contained.
-And KMA to identify which antibiotic resistance genes.
-The overall goal of this Pipeline is to use Kmer based alignment to quickly perform the above steps in less than 5-10 minutes.
+This GUI tool identifies which bacteria/virus, plasmids, and antibiotic resistance genes are contained in you NGS DNA sequences.
+It uses Mash Screen to identify the pathogens and plasmids.
+KMA to identify which antibiotic resistance genes.
+The overall goal is to use Kmer based alignment to quickly perform the above steps in less than 5-10 minutes per sample.
 
 ## Summary - Installation 
 1. Clone Repository 
 2. Install Conda if not already in environment
 3. Create conda environment
+4. Download Mash libraries.
 
 ## Summary - How to run after installation.
 1. Activate conda environment - `conda activate KPIP`
