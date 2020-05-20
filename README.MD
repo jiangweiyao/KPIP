@@ -1,7 +1,7 @@
 # Kmer Pathogen Identification Pipeline 
 
 This GUI tool identifies which bacteria/virus, plasmids, and antibiotic resistance genes are contained in you NGS DNA sequences.
-It uses [Mash Screen] (https://mash.readthedocs.io/en/latest/tutorials.html) to identify the pathogens and plasmids.
+It uses [Mash Screen](https://mash.readthedocs.io/en/latest/tutorials.html) to identify the pathogens and plasmids.
 KMA to identify which antibiotic resistance genes.
 The overall goal is to use Kmer based alignment to quickly perform the above steps in less than 5-10 minutes per sample.
 
