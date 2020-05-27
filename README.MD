@@ -1,6 +1,6 @@
 # Kmer Pathogen Identification Pipeline 
 
-This GUI tool identifies which bacteria/virus, plasmids, and antibiotic resistance genes are contained in you NGS DNA. It supports short reads such as Illumina, low accuracy long reads like Nanopore, and long reads such as PacBio or pre-assembled reads
+This GUI tool identifies which bacteria/virus, plasmids, and antibiotic resistance genes are contained in your NGS DNA sequences. It supports short reads such as Illumina, low accuracy long reads like Nanopore, and long reads such as PacBio or pre-assembled reads
 It uses [Mash Screen](https://mash.readthedocs.io/en/latest/tutorials.html) to identify the pathogens and plasmids.
 And [KMA](https://bitbucket.org/genomicepidemiology/kma) to identify which antibiotic resistance genes.
 The overall goal is to use Kmer based alignment to quickly perform the above steps in less than 5-10 minutes per sample. It is also expected to be more robust than assembly based methods. 
