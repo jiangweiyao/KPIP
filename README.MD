@@ -1,20 +1,21 @@
 # Kmer Pathogen Identification Pipeline 
 
-This pipeline uses Mash Screen to identify which bacteria and viruses are contained in your NGS DNA sequences.
-It uses Mash Screen again to identify which plasmids are contained.
-And KMA to identify which antibiotic resistance genes.
-The overall goal of this Pipeline is to use Kmer based alignment to quickly perform the above steps in less than 5-10 minutes.
+This GUI tool identifies which bacteria/virus, plasmids, and antibiotic resistance genes are contained in you NGS DNA. It supports short reads such as Illumina, low accuracy long reads like Nanopore, and long reads such as PacBio or pre-assembled reads
+It uses [Mash Screen](https://mash.readthedocs.io/en/latest/tutorials.html) to identify the pathogens and plasmids.
+And [KMA](https://bitbucket.org/genomicepidemiology/kma) to identify which antibiotic resistance genes.
+The overall goal is to use Kmer based alignment to quickly perform the above steps in less than 5-10 minutes per sample. It is also expected to be more robust than assembly based methods. 
 
 ## Summary - Installation 
 1. Clone Repository 
 2. Install Conda if not already in environment
 3. Create conda environment
+4. Download Mash libraries.
 
 ## Summary - How to run after installation.
 1. Activate conda environment - `conda activate KPIP`
 2. Run the GUI - `~/KPIP/KPIP_GUI.py`
 
-### Install git for Debian systems using the following command (if necessary)
+## Install git for Debian systems using the following command (if necessary)
 ```
 sudo apt update
 sudo apt install git
@@ -34,15 +35,27 @@ You can run the prepackaged script `install_miniconda.sh` in the repository to i
 . ~/KPIP/install_miniconda.sh
 ```
 
-### Build the environment. Need to do once.
+## Build the environment. Need to do once.
 
 We use conda to create an environment (that we can activate and deactivate) to install our dependent software and resolve their dependencies. This environment is called "KPIP". 
-
 ```
 conda create -n KPIP python=3 gooey tabulate pandas mash kma -y
 ```
 
 The command to generate the environment is in the included `conda_env.txt` file. 
+
+## Download the Mash databases.
+
+The Mash databases are too big to include with KPIP. The included `get_msh_db.sh` file can automatically download the databases for you and put them in the default location for KPIP (~/KPIP/db/). You can also make and use your own databases following the instructions from Mash. You can run this with the following command:
+```
+sh get_msh_db.sh
+```
+
+## KMA databases.
+
+Two KMA databases are included with KPIP - built from [ResFinder](https://bitbucket.org/genomicepidemiology/resfinder.git) or [CARD](https://card.mcmaster.ca/download). You can also use and make your own custom database per instructions from KMA.
+
+There are significant differences between the purpose of the ResFinder and the CARD database. The CARD database attempts to contain all known genes that confer antibiotic resistance, even genes that are naturally prevalent in a bacteria. The ResFinder database attempts to contain only AR genes not naturally found in a bacteria. For example, *Escherichia coli* naturally contain a numer of efflux genes, which is why it is naturally resistant to many antibiotics. These efflux genes will be detected using the CARD database, but ignored using the ResFinder database. Plasmid contained AR genes such β-Lactamase Genes would be detected using both databases. In other words, the CARD database is intended to be comprehensive, while the ResFinder database is intended to be medically actionable. 
 
 ## Run the code.
 
